@@ -1,0 +1,46 @@
+{
+  "name": "base-wa-mansx",
+  "version": "1.3",
+  "description": "WA base MansxDev — Baileys ori",
+  "main": "main.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "author": "MansxDev",
+  "license": "MIT",
+  "dependencies": {
+    "@hapi/boom": "^10.0.0",
+    "awesome-phonenumber": "^2.64.0",
+    "axios": "^0.24.0",
+    "@whiskeysockets/baileys": "6.7.24",
+    "async": "^3.2.5",
+    "btch-downloader": "^2.8.4",
+    "caliph-api": "^1.0.1",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.10",
+    "css-select": "5.1.0",
+    "fake-useragent": "^1.0.1",
+    "file-type": "9.0.0",
+    "fluent-ffmpeg": "^2.1.2",
+    "form-data": "^4.0.0",
+    "human-readable": "^0.2.1",
+    "jimp": "^0.16.3",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "^6.2.1",
+    "multistream": "^2.1.0",
+    "node-fetch": "^2.6.7",
+    "node-webpmux": "^3.1.0",
+    "nodemon": "^3.1.7",
+    "pino": "^9.4.0",
+    "yargs": "^17.7.2",
+    "yt-search": "^2.12.1"
+  },
+  "overrides": {
+    "ytdl-core": "^4.11.5"
+  },
+  "allowScripts": {
+    "protobufjs@7.6.6": true,
+    "@whiskeysockets/baileys@6.7.24": true
+  }
+}
