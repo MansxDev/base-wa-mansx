@@ -61,11 +61,17 @@ switch (command) {
 // KOSONGAN BUAT LU YANG MAU BELAJAR BIKIN SC!! 
 
 case "menu": {
-const menu = `*INFORMATION BOT*
-• User : ${m.sender.split("@")[0]}
-• Creator : ${namaOwner}
-• Store : ${storename}
-• Bot : ${botname} v${versi}
+const menu = `
+🜲 \`*INFORMATION BOT\` 🜲
+给 *User : ${m.sender.split("@")[0]}*
+给 *Creator : MansxDev*
+给 *Store Name : ${storename}*
+给 *Name Bot : ${botname}*
+给 *Versi : ${versi}*
+给 *Type : Case*
+
+*𝐏𝐄𝐒𝐀𝐍 𝐌𝐎𝐑𝐀𝐋*
+*人間は、何気ないものですが、この世界に生まれ、生きるものです。*
 
 *DAFTAR MENU*
 • ${prefix}menu — Menu ini
@@ -77,17 +83,32 @@ const menu = `*INFORMATION BOT*
 • ${prefix}uji <teks> — Tes reply
 
 *NOTE*
-Bot ini pakai baileys ori — button/interactive nggak dirender WA, jadi semua menu pake teks.
+Button nggak dirender WA — menu ini dikirim sebagai lampiran file.
 `
-await sock.sendMessage(m.chat, { text: menu, contextInfo: {
-   mentionedJid: [m.sender],
-   externalAdReply: {
-     title: `${botname} - ${versi}`,
-     thumbnailUrl: global.image.logo,
-     mediaType: 1,
-     renderLargerThumbnail: true,
-   },
-} })
+await sock.sendMessage(m.chat, {
+  footer: `© Base MansxDev`,
+  headerType: 1,
+  viewOnce: true,
+  document: fs.readFileSync("./package.json"),
+  fileName: `${namaOwner}`,
+  mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  fileLength: 99999999,
+  caption: menu,
+  contextInfo: {
+   isForwarded: true, 
+   mentionedJid: [m.sender, global.owner+"@s.whatsapp.net"], 
+   forwardedNewsletterMessageInfo: {
+   newsletterJid: global.idSaluran,
+   newsletterName: global.namaSaluran
+   },    
+    externalAdReply: {
+      title: `${botname} - ${versi}`,
+      thumbnailUrl: global.image.logo,
+      mediaType: 1,
+      renderLargerThumbnail: true,
+    },
+  },
+})
 }
 break
 
