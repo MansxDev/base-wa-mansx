@@ -14,7 +14,7 @@ WhatsApp bot base (Baileys **official**) by **MansxDev**. Case-switch style, no 
 - 💾 JSON database (`system/database.js`) + premium/owner lists (`data/`)
 - 🧩 smsg-serialized message object (`m.chat`, `m.sender`, `m.isGroup`, `m.quoted`, `m.reply`, …)
 - 🛡 Owner-only commands (`addcase`, `getcase`, `delcase`)
-- 🚫 **No buttons/interactive messages** — plain text only (official API only requirement)
+- 🚫 **No buttons/interactive messages** — menus are sent as document attachment with caption (WA doesn't render interactive messages on the non-official API)
 
 ## Requirements
 
@@ -66,6 +66,36 @@ case "ping": {
   m.reply(msg.wait) // optional "processing" reply
   await sleep(1000)
   m.reply(`Pong! ${Math.round(process.uptime()*1000)}ms`)
+}
+break
+```
+
+The `.menu` case sends the command list as a **document attachment with caption** — historical base style minus buttons:
+
+```js
+case "menu": {
+const menu = `*INFORMATION BOT*
+• User : ${m.sender.split("@")[0]}
+• Creator : ${namaOwner}
+
+*DAFTAR MENU*
+• ${prefix}menu — Menu ini
+• ${prefix}owner — Kontak owner
+• ${prefix}dev — Info owner
+`
+await sock.sendMessage(m.chat, {
+  footer: `© Base MansxDev`,
+  headerType: 1,
+  viewOnce: true,
+  document: fs.readFileSync("./package.json"),
+  fileName: `${namaOwner}`,
+  mimetype: 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+  fileLength: 99999999,
+  caption: menu,
+  contextInfo: { isForwarded: true,
+    mentionedJid: [m.sender, global.owner+"@s.whatsapp.net"],
+    externalAdReply: { title: `${botname} - ${versi}`, thumbnailUrl: global.image.logo, mediaType: 1, renderLargerThumbnail: true } }
+})
 }
 break
 ```
