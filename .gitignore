@@ -2,3 +2,9 @@ node_modules/
 session/
 system/tmp/
 *.log
+
+# Kredensial & konfigurasi lokal — jangan pernah di-push
+.env
+.env.*
+config.json
+*.session
